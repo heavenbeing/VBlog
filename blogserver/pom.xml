@@ -3,13 +3,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.sang</groupId>
-	<artifactId>blogserver</artifactId>
+	<groupId>com.ms</groupId>
+	<artifactId>MS-Server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>blogserver</name>
-	<description>Vue博客服务端</description>
+	<name>MS-Server</name>
+	<description>MS 服务端</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
