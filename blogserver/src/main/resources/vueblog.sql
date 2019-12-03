@@ -280,3 +280,12 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost`  VIEW `pvview` AS select s
 DROP VIEW IF EXISTS `totalpvview`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost`  VIEW `totalpvview` AS select sum(pageView) as totalPv,uid from article a group by uid ;
 SET FOREIGN_KEY_CHECKS=1;
+
+CREATE TABLE `wx_slide`  (
+  `id` varchar(32) NOT NULL COMMENT 'id',
+  `info` varchar(255) NOT NULL COMMENT '显示信息',
+  `wx_app_id` int(0) NULL COMMENT 'wx app id',
+  `img` varchar(255) NULL COMMENT '图片地址',
+  `url` varchar(255) NULL COMMENT '点击链接地址',
+  PRIMARY KEY (`id`)
+);
