@@ -60,10 +60,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         if (swaggerSwitch) {
-            http.authorizeRequests()
+            http.csrf().disable().authorizeRequests() //这里将csrf置为disable，禁用
                     .anyRequest().permitAll();
         } else {
-            http.authorizeRequests()
+            http.csrf().disable().authorizeRequests() //这里将csrf置为disable，禁用
                     .antMatchers("/admin/category/all").authenticated()
                     // /admin/**的URL都需要有超级管理员角色，如果使用.hasAuthority()方法来配置，需要在参数中加上ROLE_,如下.hasAuthority("ROLE_超级管理员")
                     .antMatchers("/admin/**","/reg").hasRole("超级管理员")
