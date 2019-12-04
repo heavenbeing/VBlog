@@ -7,6 +7,7 @@ import com.ms.model.wx.BuzTypeResp;
 import com.ms.model.wx.CompanyInfo;
 import com.ms.model.wx.CompanyInfoResp;
 import com.ms.service.wxapp.IndexService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -14,7 +15,7 @@ import java.util.List;
 
 @Service
 public class IndexServiceImpl implements IndexService {
-
+    @Autowired
     private IndexMapper indexDao;
 
     private final String wxAppId = "6";
