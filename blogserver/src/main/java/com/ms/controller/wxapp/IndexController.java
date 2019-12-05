@@ -49,4 +49,10 @@ public class IndexController {
     public ApiResultResp getSlide(@RequestParam String wxappid) {
         return indexService.getSlide(wxappid);
     }
+
+    @ApiOperation(value = "获取商家首页幻灯片", notes = "获取商家首页幻灯片")
+    @RequestMapping(value = "/getphotogroup", method = RequestMethod.GET)
+    public ApiResultResp getPhotoGroup(@RequestParam String wxappid) {
+        return indexService.getPhotoGroup(wxappid);
+    }
 }

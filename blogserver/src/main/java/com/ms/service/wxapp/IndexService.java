@@ -17,4 +17,6 @@ public interface IndexService {
     MapResp getMap(String appId);
 
     ApiResultResp getSlide(String appId);
+
+    ApiResultResp getPhotoGroup(String appId);
 }

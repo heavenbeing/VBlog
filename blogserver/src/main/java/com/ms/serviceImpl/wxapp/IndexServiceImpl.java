@@ -2,6 +2,7 @@ package com.ms.serviceImpl.wxapp;
 
 import com.ms.dao.IndexMapper;
 import com.ms.entity.wx.BuzTypeEntity;
+import com.ms.entity.wx.PhotoGroupEntity;
 import com.ms.entity.wx.SlideEntity;
 import com.ms.model.MapResp;
 import com.ms.model.wx.ApiResultResp;
@@ -111,5 +112,50 @@ public class IndexServiceImpl implements IndexService {
         slideEntities.add(slideEntity3);
 
         return new ApiResultResp<List<SlideEntity>>(slideEntities, "1");
+    }
+
+    @Override
+    public ApiResultResp getPhotoGroup(String appId) {
+        if (!wxAppId.equalsIgnoreCase(appId) || StringUtils.isEmpty(appId)) {
+            return new ApiResultResp("0");
+        }
+
+        PhotoGroupEntity photoGroupEntity = new PhotoGroupEntity(
+                "1500078445",
+                "6",
+                "https://wxapi.weiyunyi.com/Uploads/20170715/5969615e72041.jpg",
+                "公司环境介绍",
+                "公司环境",
+                "6");
+        PhotoGroupEntity photoGroupEntity1 = new PhotoGroupEntity(
+                "1500078445",
+                "6",
+                "https://wxapi.weiyunyi.com/Uploads/20170715/5969615e72041.jpg",
+                "公司环境介绍",
+                "公司环境",
+                "6");
+        PhotoGroupEntity photoGroupEntity2 = new PhotoGroupEntity(
+                "1500078445",
+                "6",
+                "https://wxapi.weiyunyi.com/Uploads/20170715/5969615e72041.jpg",
+                "公司环境介绍",
+                "公司环境",
+                "6");
+        PhotoGroupEntity photoGroupEntity3 = new PhotoGroupEntity(
+                "1500078445",
+                "6",
+                "https://wxapi.weiyunyi.com/Uploads/20170715/5969615e72041.jpg",
+                "公司环境介绍",
+                "公司环境",
+                "6");
+
+
+        List<PhotoGroupEntity> photoGroupEntities = new ArrayList<>();
+        photoGroupEntities.add(photoGroupEntity);
+        photoGroupEntities.add(photoGroupEntity1);
+        photoGroupEntities.add(photoGroupEntity2);
+        photoGroupEntities.add(photoGroupEntity3);
+
+        return new ApiResultResp<List<PhotoGroupEntity>>(photoGroupEntities, "1");
     }
 }
