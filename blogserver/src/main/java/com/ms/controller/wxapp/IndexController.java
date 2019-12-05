@@ -3,6 +3,7 @@ package com.ms.controller.wxapp;
 import com.ms.bean.Article;
 import com.ms.model.LoginInfoReq;
 import com.ms.model.MapResp;
+import com.ms.model.wx.ApiResultResp;
 import com.ms.model.wx.BuzTypeResp;
 import com.ms.model.wx.CompanyInfo;
 import com.ms.model.wx.CompanyInfoResp;
@@ -41,5 +42,11 @@ public class IndexController {
     @RequestMapping(value = "/gettype", method = RequestMethod.POST)
     public BuzTypeResp getBuzType(@RequestParam String wxappid) {
         return indexService.getBuzType(wxappid);
+    }
+
+    @ApiOperation(value = "获取商家首页幻灯片", notes = "获取商家首页幻灯片")
+    @RequestMapping(value = "/getslide", method = RequestMethod.GET)
+    public ApiResultResp getSlide(@RequestParam String wxappid) {
+        return indexService.getSlide(wxappid);
     }
 }

@@ -2,7 +2,9 @@ package com.ms.serviceImpl.wxapp;
 
 import com.ms.dao.IndexMapper;
 import com.ms.entity.wx.BuzTypeEntity;
+import com.ms.entity.wx.SlideEntity;
 import com.ms.model.MapResp;
+import com.ms.model.wx.ApiResultResp;
 import com.ms.model.wx.BuzTypeResp;
 import com.ms.model.wx.CompanyInfo;
 import com.ms.model.wx.CompanyInfoResp;
@@ -11,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -67,5 +70,46 @@ public class IndexServiceImpl implements IndexService {
         }
 
         return new MapResp("","");
+    }
+
+    @Override
+    public ApiResultResp getSlide(String appId) {
+
+        if (!wxAppId.equalsIgnoreCase(appId) || StringUtils.isEmpty(appId)) {
+            return new ApiResultResp("0");
+        }
+
+        SlideEntity slideEntity = new SlideEntity(
+                "17",
+                "https://wxapi.weiyunyi.com/Uploads/20170714/596875c0e3698.png",
+                "装修啦",
+                "测试地址",
+                "6");
+        SlideEntity slideEntity1 = new SlideEntity(
+                "18",
+                "https://wxapi.weiyunyi.com/Uploads/20170714/596875903b58f.png",
+                "专修",
+                "测试地址",
+                "6");
+        SlideEntity slideEntity2 = new SlideEntity(
+                "18",
+                "https://wxapi.weiyunyi.com/Uploads/20170714/596875903b58f.png",
+                "专修",
+                "测试地址",
+                "6");
+        SlideEntity slideEntity3 = new SlideEntity(
+                "18",
+                "https://wxapi.weiyunyi.com/Uploads/20170714/596875903b58f.png",
+                "专修",
+                "测试地址",
+                "6");
+
+        List<SlideEntity> slideEntities = new ArrayList<>();
+        slideEntities.add(slideEntity);
+        slideEntities.add(slideEntity1);
+        slideEntities.add(slideEntity2);
+        slideEntities.add(slideEntity3);
+
+        return new ApiResultResp<List<SlideEntity>>(slideEntities, "1");
     }
 }
