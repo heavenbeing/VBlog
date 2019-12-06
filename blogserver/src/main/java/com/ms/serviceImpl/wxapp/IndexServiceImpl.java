@@ -47,8 +47,8 @@ public class IndexServiceImpl implements IndexService {
                     "郑州市高新区",
                     "3",
                     "<p>装修界的扛把子</p>",
-                    "33.7453014",
-                    "113.30084898",
+                    "113.54",
+                    "34.83",
                     "茗顺装饰",
                     "123456789",
                     "6"
@@ -67,7 +67,7 @@ public class IndexServiceImpl implements IndexService {
     @Override
     public MapResp getMap(String appId) {
         if (wxAppId.equalsIgnoreCase(appId)) {
-            return new MapResp("113.30084898", "33.7453014");
+            return new MapResp("34.83", "113.54");
         }
 
         return new MapResp("","");
