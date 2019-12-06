@@ -27,19 +27,19 @@ public class IndexController {
     }
 
     @ApiOperation(value = "获取地图经纬度",notes ="获取地图经纬度")
-    @RequestMapping(value = "/getmap", method = RequestMethod.POST)
+    @RequestMapping(value = "/getmap", method = RequestMethod.GET)
     public MapResp getMap(@RequestParam String wxappid) {
         return indexService.getMap(wxappid);
     }
 
     @ApiOperation(value = "获取公司基本信息",notes ="获取公司基本信息")
-    @RequestMapping(value = "/getinfo", method = RequestMethod.POST)
+    @RequestMapping(value = "/getinfo", method = RequestMethod.GET)
     public CompanyInfoResp getInfo(@RequestParam String wxappid) {
         return indexService.getInfo(wxappid);
     }
 
     @ApiOperation(value = "获取商家分类", notes = "获取商家分类")
-    @RequestMapping(value = "/gettype", method = RequestMethod.POST)
+    @RequestMapping(value = "/gettype", method = RequestMethod.GET)
     public BuzTypeResp getBuzType(@RequestParam String wxappid) {
         return indexService.getBuzType(wxappid);
     }
