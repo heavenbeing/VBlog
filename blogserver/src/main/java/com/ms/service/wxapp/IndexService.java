@@ -19,4 +19,7 @@ public interface IndexService {
     ApiResultResp getSlide(String appId);
 
     ApiResultResp getPhotoGroup(String appId);
+
+    ApiResultResp getPreList(String appId);
+
 }

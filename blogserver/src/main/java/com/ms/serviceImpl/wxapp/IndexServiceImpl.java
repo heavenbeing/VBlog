@@ -1,6 +1,7 @@
 package com.ms.serviceImpl.wxapp;
 
 import com.ms.dao.IndexMapper;
+import com.ms.entity.wx.AppointmentEntity;
 import com.ms.entity.wx.BuzTypeEntity;
 import com.ms.entity.wx.PhotoGroupEntity;
 import com.ms.entity.wx.SlideEntity;
@@ -158,4 +159,32 @@ public class IndexServiceImpl implements IndexService {
 
         return new ApiResultResp<List<PhotoGroupEntity>>(photoGroupEntities, "1");
     }
+
+    @Override
+    public ApiResultResp getPreList(String appId) {
+        if (!wxAppId.equalsIgnoreCase(appId) || StringUtils.isEmpty(appId)) {
+            return new ApiResultResp("0");
+        }
+
+        AppointmentEntity appointmentEntity = new AppointmentEntity(
+                "12",
+                "0",
+                "&lt;p&gt;放到了卡斯放四大离开&lt;/p&gt;",
+                "1521073970",
+                "6",
+                "https://wxapi.weiyunyi.com/Uploads/20170715/5969e5c2c9047.jpg",
+                "装修给你美丽,美丽因装修不同,一切从装修开始",
+                "0",
+                "",
+                "0.00",
+                "55",
+                "装修预约",
+                "5",
+                "6"
+                );
+
+        List<AppointmentEntity> appointmentEntities = new ArrayList<>();
+        appointmentEntities.add(appointmentEntity);
+
+        return new ApiResultResp<List<AppointmentEntity>>(appointmentEntities, "1");    }
 }

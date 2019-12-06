@@ -55,4 +55,10 @@ public class IndexController {
     public ApiResultResp getPhotoGroup(@RequestParam String wxappid) {
         return indexService.getPhotoGroup(wxappid);
     }
+
+    @ApiOperation(value = "获取商家首页幻灯片", notes = "获取商家首页幻灯片")
+    @RequestMapping(value = "/getprelist", method = RequestMethod.GET)
+    public ApiResultResp getPreList(@RequestParam String wxappid) {
+        return indexService.getPreList(wxappid);
+    }
 }
