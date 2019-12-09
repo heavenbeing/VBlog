@@ -22,6 +22,8 @@ public interface IndexService {
 
     ApiResultResp getPreList(String appId);
 
+    ApiResultResp getPre(String appId,String preId);
+
     ApiResultResp getArticle(String appId, String id);
 
     ApiResultResp getArticleList(String appId, Integer typeId);

@@ -63,6 +63,12 @@ public class IndexController {
         return indexService.getPreList(wxappid);
     }
 
+    @ApiOperation(value = "获取预约详情", notes = "获取预约详情")
+    @RequestMapping(value = "/getpre", method = RequestMethod.GET)
+    public ApiResultResp getPre(@RequestParam String wxappid,@RequestParam String preid) {
+        return indexService.getPre(wxappid,preid);
+    }
+
     @ApiOperation(value = "文章", notes = "文章")
     @RequestMapping(value = "/getartical", method = RequestMethod.GET)
     public ApiResultResp getArticle(@RequestParam String wxappid, @RequestParam String id) {
