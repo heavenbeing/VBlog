@@ -10,6 +10,7 @@ import com.ms.model.wx.CompanyInfoResp;
 import com.ms.service.ArticleService;
 import com.ms.service.wxapp.IndexService;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -60,5 +61,17 @@ public class IndexController {
     @RequestMapping(value = "/getprelist", method = RequestMethod.GET)
     public ApiResultResp getPreList(@RequestParam String wxappid) {
         return indexService.getPreList(wxappid);
+    }
+
+    @ApiOperation(value = "文章", notes = "文章")
+    @RequestMapping(value = "/getartical", method = RequestMethod.GET)
+    public ApiResultResp getArticle(@RequestParam String wxappid, @RequestParam String id) {
+        return indexService.getArticle(wxappid, id);
+    }
+
+    @ApiOperation(value = "文章", notes = "文章")
+    @RequestMapping(value = "/gettarticallist", method = RequestMethod.GET)
+    public ApiResultResp getArticleList(@RequestParam String wxappid, @RequestParam Integer typeid) {
+        return indexService.getArticleList(wxappid, typeid);
     }
 }

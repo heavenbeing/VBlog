@@ -3,12 +3,14 @@ package com.ms.mapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import com.ms.bean.Article;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
  * Created by sang on 2017/12/20.
  */
+@Repository
 @Mapper
 public interface ArticleMapper {
     int addNewArticle(Article article);
@@ -35,4 +37,7 @@ public interface ArticleMapper {
     List<String> getCategories(Long uid);
 
     List<Integer> getDataStatistics(Long uid);
+
+    List<Article> getArticles(@Param("categoryId") Integer categoryId);
+
 }

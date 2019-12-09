@@ -22,4 +22,7 @@ public interface IndexService {
 
     ApiResultResp getPreList(String appId);
 
+    ApiResultResp getArticle(String appId, String id);
+
+    ApiResultResp getArticleList(String appId, Integer typeId);
 }

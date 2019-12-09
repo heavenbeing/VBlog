@@ -1,15 +1,11 @@
 package com.ms.serviceImpl.wxapp;
 
+import com.ms.bean.Article;
 import com.ms.dao.IndexMapper;
-import com.ms.entity.wx.AppointmentEntity;
-import com.ms.entity.wx.BuzTypeEntity;
-import com.ms.entity.wx.PhotoGroupEntity;
-import com.ms.entity.wx.SlideEntity;
+import com.ms.entity.wx.*;
+import com.ms.mapper.ArticleMapper;
 import com.ms.model.MapResp;
-import com.ms.model.wx.ApiResultResp;
-import com.ms.model.wx.BuzTypeResp;
-import com.ms.model.wx.CompanyInfo;
-import com.ms.model.wx.CompanyInfoResp;
+import com.ms.model.wx.*;
 import com.ms.service.wxapp.IndexService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +18,8 @@ import java.util.List;
 public class IndexServiceImpl implements IndexService {
     @Autowired
     private IndexMapper indexDao;
+    @Autowired
+    private ArticleMapper articleMapper;
 
     private final String wxAppId = "6";
 
@@ -186,5 +184,69 @@ public class IndexServiceImpl implements IndexService {
         List<AppointmentEntity> appointmentEntities = new ArrayList<>();
         appointmentEntities.add(appointmentEntity);
 
-        return new ApiResultResp<List<AppointmentEntity>>(appointmentEntities, "1");    }
+        return new ApiResultResp<List<AppointmentEntity>>(appointmentEntities, "1");
+    }
+
+    @Override
+    public ApiResultResp getArticle(String appId, String id) {
+        if (!wxAppId.equalsIgnoreCase(appId) || StringUtils.isEmpty(appId)) {
+            return new ApiResultResp("0");
+        }
+
+        if (StringUtils.isEmpty(id)) {
+            return new ApiResultResp("0");
+        }
+
+        ArticleEntity articleEntity = new ArticleEntity(
+                "2017-07-17",
+                "<p>的萨菲拉开距离就哭了尽量尽量快进来看快乐快乐就凉快哪了呢凉快圣诞节快哭了解放了贷款时间了空间车型,来看大家来看拉开距离咖啡色的,放大搜卡嘉莉放大数据量快捷你来看大家来看而我李炯sd卡就噢诶哦不能从下面哦偶尔今晚哦的说法经理级能吃吗就哭了我就欧皮文理科的撒娇刻录机额外破来看就上课了偶尔今晚io</p>",
+                "6",
+                "https://wxapi.weiyunyi.com/Uploads/20170715/5969902c56885.jpg",
+                "因为你的家,就是我们的家,因为顾客,就是上帝,我们为上帝提供最优的服务,最适合的价钱",
+                "家装报价",
+                "https://wxapi.weiyunyi.com/Uploads/20170715/5969673bd509c.jpg",
+                "5",
+                "6"
+        );
+
+        List<ArticleEntity> articleEntities = new ArrayList<>();
+        articleEntities.add(articleEntity);
+
+        return new ApiResultResp<List<ArticleEntity>>(articleEntities, "1");
+    }
+
+    @Override
+    public ApiResultResp getArticleList(String appId, Integer typeId) {
+        if (!wxAppId.equalsIgnoreCase(appId) || StringUtils.isEmpty(appId)) {
+            return new ApiResultResp("0");
+        }
+
+        if (StringUtils.isEmpty(typeId)) {
+            return new ApiResultResp("0");
+        }
+
+        List<Article> articles = articleMapper.getArticles(typeId);
+
+        List<ArticleResp> resps = new ArrayList<>();
+
+        for (Article article : articles) {
+            ArticleResp resp = new ArticleResp();
+
+            resp.setId(article.getId().toString());
+            if (article.getPublishDate() != null) {
+                resp.setCreateTime(article.getPublishDate().toString());
+            }
+            resp.setDetails(article.getHtmlContent());
+            resp.setText(article.getSummary());
+            resp.setTitle(article.getTitle());
+            resp.setTypeId(article.getCid().toString());
+            resp.setWxAppId(article.getWxAppId());
+            resp.setImg(article.getImg());
+            resp.setTopPic(article.getTopPic());
+
+            resps.add(resp);
+        }
+
+        return new ApiResultResp<List<ArticleResp>>(resps, "1");
+    }
 }

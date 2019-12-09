@@ -23,6 +23,9 @@ public class Article {
     private String cateName;
     private List<Tags> tags;
     private String stateStr;
+    private String wxAppId;
+    private String img;
+    private String topPic;
 
     public String getStateStr() {
         return stateStr;
@@ -150,5 +153,29 @@ public class Article {
 
     public void setPageView(Integer pageView) {
         this.pageView = pageView;
+    }
+
+    public String getWxAppId() {
+        return wxAppId;
+    }
+
+    public void setWxAppId(String wxAppId) {
+        this.wxAppId = wxAppId;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public String getTopPic() {
+        return topPic;
+    }
+
+    public void setTopPic(String topPic) {
+        this.topPic = topPic;
     }
 }
